@@ -175,10 +175,10 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
         current_scale = max(0.3f, current_scale - stride);
     }
-    if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
         current_omega = min(4.0f, current_omega + 0.05f);
     }
-    if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
         current_omega = max(-4.0f, current_omega - 0.05f);
     }
 }
