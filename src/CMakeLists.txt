@@ -12,5 +12,6 @@ configure_file(shaders/light_cube.fs light_cube.fs COPYONLY)
 target_link_libraries(algo utils)
 
 add_custom_target(
-        run  $<TARGET_FILE:utils>
+        run  $<TARGET_FILE:algo>
+        DEPENDS algo
 )
