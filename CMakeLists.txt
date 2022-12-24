@@ -3,6 +3,8 @@ project(algo CXX C ASM)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(ASSIMP_BUILD_TESTS OFF)
+
 find_package(glfw3 3.3 REQUIRED)
 
 find_package(glm QUIET)
