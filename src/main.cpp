@@ -98,7 +98,7 @@ int main()
 
     // load models
     // -----------
-    Model ourModel("test/test.obj");
+    Model ourModel("model/model.obj");
     cube point(pointPosition);
 
     // render loop
