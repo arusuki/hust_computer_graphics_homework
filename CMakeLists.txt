@@ -19,7 +19,7 @@ find_package(assimp QUIET)
 if (NOT assimp_FOUND)
     message("glm not found, initializing git submodule")
     execute_process(
-            COMMAND git submodule update --init -- 3rdparty/glm
+            COMMAND git submodule update --init -- 3rdparty/assimp
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     )
     add_subdirectory(3rdparty/assimp)
