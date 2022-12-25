@@ -8,7 +8,7 @@ set(ASSIMP_BUILD_TESTS OFF)
 find_package(glfw3 3.3 REQUIRED)
 
 find_package(glm QUIET)
-if (NOT yaml-cpp_FOUND)
+if (NOT glm_FOUND)
     message("glm not found, initializing git submodule")
     execute_process(
             COMMAND git submodule update --init -- 3rdparty/glm
