@@ -1,6 +1,3 @@
-//
-// Created by 陶林天 on 2022/12/24.
-//
 #include <algo/cube.h>
 
 namespace {

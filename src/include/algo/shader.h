@@ -1,7 +1,3 @@
-//
-// Created by 陶林天 on 2022/12/19.
-//
-
 #ifndef ALGO_SHADER_H
 #define ALGO_SHADER_H
 
