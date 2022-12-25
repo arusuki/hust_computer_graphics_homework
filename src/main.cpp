@@ -33,6 +33,11 @@ float current_scale = 1.0f;
 float current_omega = glm::radians(50.0f);
 float current_theta = 0.0f;
 
+float current_fai = 0.0f;
+float dfai_dt = glm::radians(30.f);
+
+const auto axis = glm::normalize(glm::vec3 {-1, 1, 0});
+
 struct draw_context {
     Model &model;
     Shader &shader;
@@ -111,6 +116,7 @@ int main()
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         current_theta += current_omega * deltaTime;
+        current_fai   += dfai_dt * deltaTime;
 
         // input
         // -----
@@ -123,18 +129,19 @@ int main()
 
         const glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
         const glm::mat4 view = camera.GetViewMatrix();
-        const auto fai = glm::radians(glfwGetTime() * 30);
         const auto r = 3.0f;
 
         draw_context context{ourModel, ourShader, view, projection};
 
         context.position = glm::vec3(0.0f);
-        context.theta    = fai;
+        context.theta    = current_fai;
         context.scale    = current_scale;
         draw_model(context);
 
-        context.position = glm::vec3(r * cos(current_theta), r * sin(current_theta), 0.0f);
-        context.theta    = fai;
+        const auto position = glm::rotate(glm::mat4(1.0f), current_theta, axis) * glm::vec4(0, 0, 1, 1);
+//        context.position = glm::vec3(r * cos(current_theta), r * sin(current_theta), 0.0f);
+        context.position = position * r;
+        context.theta    = current_fai;
         context.scale    = 0.5f;
         draw_model(context);
 
@@ -179,7 +186,13 @@ void processInput(GLFWwindow *window)
         current_omega = min(4.0f, current_omega + 0.05f);
     }
     if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
-        current_omega = max(-4.0f, current_omega - 0.05f);
+        current_omega = max(-4.0f, dfai_dt - 0.05f);
+    }
+    if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
+        dfai_dt = min(4.0f, dfai_dt + 0.05f);
+    }
+    if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
+        dfai_dt = max(-4.0f, dfai_dt - 0.05f);
     }
 }
 
