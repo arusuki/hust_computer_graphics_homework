@@ -9,10 +9,6 @@ configure_file(shaders/colors.fs colors.fs COPYONLY)
 configure_file(shaders/light_cube.vs light_cube.vs COPYONLY)
 configure_file(shaders/light_cube.fs light_cube.fs COPYONLY)
 
-if(MSVC)
-	set_property(TARGET algo APPEND PROPERTY LINK_FLAGS "/NODEFAULTLIB:MSVCRT")
-endif()
-
 install(TARGETS algo RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 install(FILES shaders/colors.vs shaders/colors.fs shaders/light_cube.vs shaders/light_cube.fs
