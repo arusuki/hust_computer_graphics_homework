@@ -5,15 +5,16 @@
 > 提供windows下的预编译二进制文件。
 >
 
-## 1. 安装glfw和assimp (可选)
+## 1. 安装依赖库 (可选)
 
-- 使用包管理工具进行安装，跳过此步骤会自动从拉取github仓库从源码进行构建。
+本项目依赖glfw3，assimp和glm。可以使用包管理工具进行安装，跳过此步骤会自动从拉取github仓库从源码进行构建。
 
-Macos下，使用homebrew安装glfw和assimp。
+Macos下，使用homebrew安装。
 
 ```
 brew install glfw
 brew install assimp
+brew install glm
 ```
 
 Linux下可用自带包管理器安装（以apt为例），[可以参考这个文档](https://en.wikibooks.org/wiki/OpenGL_Programming/Installation/Linux)。
@@ -36,11 +37,15 @@ sudo apt-get install libassimp-dev
 sudo apt-get install libassipm3
 
 sudo apt-egt install assimp-utils
+
+#install glm
+
+sudo apt install libglm-dev
 ```
 
 ## 2. 项目构建
 
-使用cmake进行项目构建和安装，如果使用源码安装的方式安装的glfw，需要在config步骤中告诉cmake实际的glfw的安装位置（`-D CMAKE_PREFIX_PATH=<path/to/your/glfw/prefix> `）。为确保ABI兼容，这里选择生成器最好与构建glfw的生成器相同。
+使用cmake进行项目构建和安装。
 
 ```
 cmake -B build -G <your_generator>
