@@ -186,7 +186,7 @@ void processInput(GLFWwindow *window)
         current_omega = min(4.0f, current_omega + 0.05f);
     }
     if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
-        current_omega = max(-4.0f, dfai_dt - 0.05f);
+        current_omega = max(-4.0f, current_omega - 0.05f);
     }
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
         dfai_dt = min(4.0f, dfai_dt + 0.05f);
