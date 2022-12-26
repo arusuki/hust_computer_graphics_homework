@@ -5,7 +5,15 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(ASSIMP_BUILD_TESTS OFF)
 
-find_package(glfw3 3.3 REQUIRED)
+find_package(glfw3 QUIET)
+if (NOT glfw3_FOUND)
+    message("glfw3 not found, initializing git submodule")
+    execute_process(
+            COMMAND git submodule update --init -- 3rdparty/glfw
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
+    add_subdirectory(3rdparty/glfw)
+endif()
 
 find_package(glm QUIET)
 if (NOT glm_FOUND)
