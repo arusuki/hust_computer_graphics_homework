@@ -163,7 +163,8 @@ int main()
 // ---------------------------------------------------------------------------------------------------------
 void processInput(GLFWwindow *window)
 {
-    const auto stride = 0.01f;
+    const auto stride = 1.0f;
+    const auto rstride = 2.0f;
 
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -177,22 +178,22 @@ void processInput(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS) {
-        current_scale = min(2.0f, current_scale + stride);
+        current_scale = min(2.0f, current_scale + stride * deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS) {
-        current_scale = max(0.3f, current_scale - stride);
+        current_scale = max(0.3f, current_scale - stride * deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS) {
-        current_omega = min(4.0f, current_omega + 0.05f);
+        current_omega = min(4.0f, current_omega + rstride * deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS) {
-        current_omega = max(-4.0f, current_omega - 0.05f);
+        current_omega = max(-4.0f, current_omega - rstride * deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS) {
-        dfai_dt = min(4.0f, dfai_dt + 0.05f);
+        dfai_dt = min(4.0f, dfai_dt + rstride * deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS) {
-        dfai_dt = max(-4.0f, dfai_dt - 0.05f);
+        dfai_dt = max(-4.0f, dfai_dt - rstride * deltaTime);
     }
 }
 
