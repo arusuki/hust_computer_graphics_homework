@@ -2,7 +2,7 @@ add_executable(algo main.cpp shader.cpp camera.cpp stb_image.cpp cube.cpp)
 
 
 target_include_directories(algo PUBLIC ./include)
-target_link_libraries(algo PUBLIC glfw glad glm::glm assimp::assimp)
+target_link_libraries(algo PUBLIC glfw glad glm::glm assimp::assimp STB)
 
 configure_file(shaders/colors.vs colors.vs COPYONLY)
 configure_file(shaders/colors.fs colors.fs COPYONLY)
