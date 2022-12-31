@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(ASSIMP_BUILD_TESTS OFF)
 
-message("assimp not found, initializing git submodule")
+message("initializing git submodule stb...")
 execute_process(
         COMMAND git submodule update --init -- 3rdparty/stb
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
