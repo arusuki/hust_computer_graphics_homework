@@ -1,5 +1,7 @@
 # ALGO: 华中科技大学计算机图形学作业（独孤信印章）
 
+作业的思路和代码主要来自[learnopengl](https://learnopengl.com)，模型用blender制作，模型的加载参考https://learnopengl.com/Model-Loading/Assimp，光照参考https://learnopengl.com/Lighting，所谓的“凹凸纹理”参考https://learnopengl.com/Advanced-Lighting/Normal-Mapping，用blender做好的模型和纹理以及法线贴图放在res文件夹下，欢迎自行使用。
+
 > 理论上本项目可以在多平台上构建。经过测试的平台有windows+VS2022，windows+mingw8.1.0，macos+xcode14.0。注意依赖库assimp在VS2022下**Debug配置**编译时会缺少pdb文件，暂时没有解决方案，请使用**Release配置**进行构建。
 >
 > 提供windows下的预编译二进制文件。
